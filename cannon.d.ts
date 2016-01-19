@@ -113,7 +113,7 @@
 
         constructor(from?: Vec3, to?: Vec3);
 
-        getAABB(result: RaycastResult): void;
+        getAABB(aabb: AABB): void;
         intersectBodies(bodies: Body[], result?: RaycastResult): void;
         intersectWorld(world: World, options: IRayIntersectWorldOptions): boolean;
 
