@@ -82,14 +82,14 @@
 
     export interface IRayIntersectWorldOptions {
 
-        mode: number;
-        result: boolean;
-        skipBackfaces: boolean;
-        collisionFilterMask: number;
-        collisionFilterGroup: number;
-        from: Vec3;
-        to: Vec3;
-        callback: Function;
+        mode?: number;
+        result?: boolean;
+        skipBackfaces?: boolean;
+        collisionFilterMask?: number;
+        collisionFilterGroup?: number;
+        from?: Vec3;
+        to?: Vec3;
+        callback?: Function;
 
     }
 
@@ -754,7 +754,7 @@
 
     export interface IRigidVehicleOptions {
 
-        chassisBody: Body;
+        chassisBody?: Body;
 
     }
 
@@ -891,11 +891,11 @@
 
     }
 
-    export interface IHightfieldOptions {
+    export interface IHeightfieldOptions {
 
         minValue?: number;
         maxValue?: number;
-        elementSize: number;
+        elementSize?: number;
 
     }
 
@@ -910,7 +910,7 @@
         pillarOffset: Vec3;
         type: number;
 
-        constructor(data: number[], options?: IHightfieldOptions);
+        constructor(data: number[], options?: IHeightfieldOptions);
 
         update(): void;
         updateMinValue(): void;
@@ -1074,11 +1074,9 @@
 
     }
 
-    export interface IOctreeOptions {
-
-        root: Octree;
-        aabb: AABB;
-
+    export interface IOctreeNodeOptions {
+        root?: Octree;
+        aabb?: AABB;
     }
 
     export class OctreeNode {
@@ -1087,14 +1085,19 @@
         children: Octree[];
         data: number[];
         root: OctreeNode;
-
+        
+        constructor(options?: IOctreeNodeOptions);
     }
-
+    
+    export interface IOctreeOptions {
+        maxDepth?: number;
+    }
+    
     export class Octree extends OctreeNode {
 
         maxDepth: number;
 
-        constructor(aabb: AABB, options: IOctreeOptions);
+        constructor(aabb: AABB, options?: IOctreeOptions);
 
         aabbQuery(aabb: AABB, result: Object[]): Object[];
         insert(aabb: AABB, elementData: Object): boolean;
@@ -1185,7 +1188,7 @@
 
     export class Demo {
 
-        constructor( options: Object );
+        constructor( options?: Object );
 
         addScene( title: string, initfunc: Function ): void;
         restartCurrentScene(): void;
