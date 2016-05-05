@@ -629,7 +629,7 @@
         applyForce(force: Vec3, worldPoint: Vec3): void;
         applyImpulse(impulse: Vec3, worldPoint: Vec3): void;
         applyLocalForce(force: Vec3, localPoint: Vec3): void;
-        applyLocalImplse(impulse: Vec3, localPoint: Vec3): void;
+        applyLocalImpulse(impulse: Vec3, localPoint: Vec3): void;
         updateBoundingRadius(): void;
         updateMassProperties(): void;
         updateInertiaWorld(force: Vec3): void;
